@@ -1,0 +1,47 @@
+.searchForm {
+    position: relative;
+
+    & input {
+        width: 50vw;
+        height: 50px;
+        border-radius: 50px;
+        padding-left: 15px;
+        border: none;
+        background-color: $light-gray;
+        outline-color: $secondary;
+        @include text-medium;
+
+        @include tablet {
+            padding-left: 30px;
+        }
+
+        @include desktop {
+            height: 70px;
+            @include text-large;
+        }
+    }
+
+    & button {
+        position: absolute;
+    }
+
+    .searchButton {
+        top: 30%;
+        right: 5%;
+
+        @include desktop {
+            right: 2%;
+            top: 35%;
+        }
+    }
+
+    .resetButton {
+        top: 30%;
+        right: 15%;
+
+        @include desktop {
+            right: 5%;
+            top: 35%;
+        }
+    }
+}

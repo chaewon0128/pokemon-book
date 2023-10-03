@@ -1,8 +1,8 @@
 import axios from "axios";
 import instance from "./instance"
 
-export const getPokemonsAPI = async (pageParam: number) => {
-    const response = await instance.get('', { params: { limit: 20, offset: pageParam } });
+export const getPokemonsAPI = async (url: string) => {
+    const response = await axios.get(url);
 
     return response;
 }

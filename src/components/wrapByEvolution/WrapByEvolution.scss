@@ -1,0 +1,16 @@
+.evolution {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .evolutionContainer {
+        display: flex;
+    }
+
+    & h3 {
+        text-align: center;
+        @include text-large;
+        background-color: $light-gray;
+        ;
+    }
+}

@@ -12,9 +12,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 16px;
-    box-shadow: -1px 16px 33px -3px rgba(0, 0, 0, 0.45);
-    -webkit-box-shadow: -1px 16px 33px -3px rgba(0, 0, 0, 0.45);
-    -moz-box-shadow: -1px 16px 33px -3px rgba(0, 0, 0, 0.45);
+    box-shadow: $box-shadow;
+    -webkit-box-shadow: $box-shadow;
+    -moz-box-shadow: $box-shadow;
 
     @include tablet {
         padding: 0 40px;

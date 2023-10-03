@@ -1,12 +1,9 @@
+import { IPokemonData } from '../../types';
 import './PokemonAbility.scss';
 
-interface IPokemonAbility {
-  info: string,
-}
-
-const PokemonAbility = ({ info }: IPokemonAbility) => {
+const PokemonAbility = ({ info }: IPokemonData) => {
   return (
-    <div className='ability'>{info} </div>
+    <div className='ability'>{info}</div>
   );
 };
 

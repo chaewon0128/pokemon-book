@@ -2,13 +2,10 @@ export interface IPokemonData {
     [key: string]: string;
 }
 
-export interface IWrapByEvolution {
-    url: string,
-}
-
-export interface IPokeminFigure {
+export interface IPokemonFigure {
     name: string,
     src: string,
-    id: number,
-    type: 'evolution' | 'information',
+    id: string,
+    type: 'evolution' | 'information' | 'main',
+    onMoveDetail?: (id: string) => void
 }

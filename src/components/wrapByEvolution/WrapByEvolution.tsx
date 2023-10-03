@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { getPokemonDetaiWithURL } from "../../api/getPokemon";
 import usePokemonDetail from "../../hooks/usePokemonDetail";
-import { IWrapByEvolution } from "../../types";
+import { IPokemonData } from "../../types";
 import './WrapByEvolution.scss';
 import PokemonFigure from "../pokemonFigure/PokemonFigure";
 
-const WrapByEvolution = ({ url }: IWrapByEvolution) => {
+const WrapByEvolution = ({ url }: IPokemonData) => {
   const { data: evolutionData } = useQuery(['evolution', url], () => getPokemonDetaiWithURL(url))
 
   // 진화 이름 배열 추출

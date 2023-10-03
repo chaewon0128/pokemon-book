@@ -6,7 +6,7 @@ import './WrapByEvolution.scss';
 import PokemonFigure from "../pokemonFigure/PokemonFigure";
 
 const WrapByEvolution = ({ url }: IWrapByEvolution) => {
-  const { data: evolutionData } = useQuery(['evolution'], () => getPokemonDetaiWithURL(url))
+  const { data: evolutionData } = useQuery(['evolution', url], () => getPokemonDetaiWithURL(url))
 
   // 진화 이름 배열 추출
   const firstEvolutionName = evolutionData?.data.chain.species.name;

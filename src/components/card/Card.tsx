@@ -16,7 +16,7 @@ const Card = () => {
         navigate(-1)
     }
 
-    const evolutionChain = pokemonDetail.evolution_chain.url
+    const evolutionChain = pokemonDetail?.evolution_chain?.url
 
     return (
         <section className='card'>
@@ -25,9 +25,9 @@ const Card = () => {
                     <button className="xMarkBtn" onClick={onBackPage}>
                         <FaXmark size={30} />
                     </button>
-                    <PokemonFigure type="information" name={pokemonDetail.korean_name} src={pokemonDetail.data.sprites.other['home']['front_default']} id={pokemonDetail.data.id} />
-                    <PokemonAbility info={pokemonDetail.korean_info} />
-                    {evolutionChain && <WrapByEvolution url={pokemonDetail.evolution_chain.url} />}
+                    <PokemonFigure type="information" name={pokemonDetail?.korean_name} src={pokemonDetail?.data.sprites.other['home']['front_default']} id={pokemonDetail?.data.id} />
+                    <PokemonAbility info={pokemonDetail?.korean_info} />
+                    {evolutionChain && <WrapByEvolution url={evolutionChain} />}
                 </>
             }
         </section>

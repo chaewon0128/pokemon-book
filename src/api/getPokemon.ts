@@ -1,7 +1,7 @@
 import axios from "axios";
 import instance from "./instance"
 
-export const getPokemonsAPI = async (url: string) => {
+export const getPokemonDetaiWithURL = async (url: string) => {
     const response = await axios.get(url);
 
     return response;
@@ -21,12 +21,6 @@ export const getPokemonSpeciesAPI = async (pokemonId: string) => {
 
 export const getPokemonEvolutionAPI = async (pokemonId: string) => {
     const response = await instance.get(`/evolution-chain/${pokemonId}`);
-
-    return response;
-}
-
-export const getPokemonDetaiWithURL = async (url: string) => {
-    const response = await axios.get(url);
 
     return response;
 }

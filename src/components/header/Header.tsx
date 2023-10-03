@@ -6,7 +6,7 @@ const Header = () => {
 
     return (
         <header className="header">
-            <h1 className="h1">Hello, Pokemon!</h1>
+            <h1 className="h1">Pokemon Book</h1>
             <SearchForm />
         </header>
     );

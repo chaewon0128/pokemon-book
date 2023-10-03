@@ -16,7 +16,7 @@
         }
 
         @include desktop {
-            height: 70px;
+            height: 60px;
             @include text-large;
         }
     }
@@ -38,6 +38,10 @@
     .resetButton {
         top: 30%;
         right: 15%;
+
+        @include tablet {
+            right: 10%;
+        }
 
         @include desktop {
             right: 5%;

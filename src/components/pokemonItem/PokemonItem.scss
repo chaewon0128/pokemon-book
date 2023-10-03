@@ -1,0 +1,14 @@
+.pokemonItem {
+    background-color: $white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.6ms;
+    box-shadow: $box-shadow;
+    -webkit-box-shadow: $box-shadow;
+    -moz-box-shadow: $box-shadow;
+}
+
+.pokemonItem:hover {
+    transform: scale(1.1);
+    transition: all 0.6ms;
+}

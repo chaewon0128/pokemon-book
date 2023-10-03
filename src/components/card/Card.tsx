@@ -5,10 +5,12 @@ import usePokemonDetail from '../../hooks/usePokemonDetail';
 import WrapByEvolution from '../wrapByEvolution/WrapByEvolution';
 import PokemonFigure from '../pokemonFigure/PokemonFigure';
 import PokemonAbility from '../pokemonAbility/PokemonAbility';
+import useLockBodyScroll from '../../hooks/useLockBodyScroll';
 
 
 
 const Card = () => {
+    useLockBodyScroll();
     const { id: pokemonId } = useParams();
     const navigate = useNavigate()
     const { pokemonDetail, isLoading } = usePokemonDetail(String(pokemonId));

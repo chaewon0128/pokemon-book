@@ -1,21 +1,22 @@
 import { FaXmark } from 'react-icons/fa6';
 import './Card.scss';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import usePokemonDetail from '../../hooks/usePokemonDetail';
 import WrapByEvolution from '../wrapByEvolution/WrapByEvolution';
 import PokemonFigure from '../pokemonFigure/PokemonFigure';
 import PokemonAbility from '../pokemonAbility/PokemonAbility';
 import useLockBodyScroll from '../../hooks/useLockBodyScroll';
+import usePageNavigate from '../../hooks/usePageNavigate';
 
 
 
 const Card = () => {
     useLockBodyScroll();
     const { id: pokemonId } = useParams();
-    const navigate = useNavigate()
     const { pokemonDetail, isLoading } = usePokemonDetail(String(pokemonId));
+    const { goToPage } = usePageNavigate();
     const onBackPage = () => {
-        navigate(-1)
+        goToPage({ page: '/', option: true });
     }
 
     const evolutionChain = pokemonDetail?.evolution_chain?.url

@@ -9,3 +9,9 @@ export interface IPokemonFigure {
     type: 'evolution' | 'information' | 'main',
     onMoveDetail?: (id: string) => void
 }
+
+
+export interface IUsePageNavigate {
+    page: string;
+    option?: boolean;
+}

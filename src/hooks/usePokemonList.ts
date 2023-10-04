@@ -1,6 +1,9 @@
 import { getPokemonDetaiWithURL } from './../api/getPokemon';
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { ALL_POKEMON } from '../constant';
+import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
+
 
 const usePokemonList = () => {
     const {
@@ -15,11 +18,17 @@ const usePokemonList = () => {
         }
     })
 
-    const allPokemons = data?.pages[0].data.results
+    const { inView, ref } = useInView();
+    const allPokemons = data?.pages;
 
+    useEffect(() => {
+        if (inView && isPokemonNextPage) {
+            getPokemonNextPage();
 
+        }
+    }, [inView]);
 
-    return { allPokemons, isFetchingNextPage, getPokemonNextPage, isPokemonNextPage }
+    return { allPokemons, isFetchingNextPage, isPokemonNextPage, ref }
 }
 
 export default usePokemonList;

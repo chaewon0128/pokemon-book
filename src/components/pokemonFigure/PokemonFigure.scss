@@ -28,7 +28,8 @@
     }
 }
 
-.evolution {
+.evolution,
+.main {
     & img {
         width: 100px;
         height: 100px;
@@ -40,6 +41,22 @@
 
     & span {
         @include text-small;
+
+    }
+}
+
+.search {
+    & img {
+        width: 200px;
+        height: 200px;
+    }
+
+    & figcaption {
+        @include heading-large;
+    }
+
+    & span {
+        @include text-medium;
 
     }
 }

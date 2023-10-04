@@ -7,7 +7,7 @@ import usePageNavigate from '../../hooks/usePageNavigate';
 
 
 const PokemonItem = ({ name }: IPokemonData) => {
-    const { pokemonDetail, isLoading } = usePokemonDetail(name);
+    const { pokemonDetail } = usePokemonDetail(name);
     const { goToPage } = usePageNavigate();
     const onMoveDetail = (id: string) => {
         goToPage({ page: `/detail/${id}`, option: false });

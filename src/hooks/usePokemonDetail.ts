@@ -1,18 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import { getPokemonDetailAPI, getPokemonSpeciesAPI } from "../api/getPokemon";
-import { POKEMON_DETAIL, POKEMON_SPECIES } from "../constant";
+import { DEFAULT_NAME, POKEMON_DETAIL, POKEMON_SPECIES } from "../constant";
 
 
 const usePokemonDetail = (pokemonId: string) => {
-    const { data: detailData, isLoading: isDetailLoading } = useQuery(
+    const { data: detailData, isLoading: isDetailLoading, isError: isDetailError, error: detailError } = useQuery(
         [POKEMON_DETAIL, pokemonId],
         () => getPokemonDetailAPI(pokemonId),
-        { enabled: !!pokemonId }
+        { enabled: !!pokemonId, suspense: true }
     );
-    const { data: speciesData, isLoading: isSpeciesLoading } = useQuery(
+    const { data: speciesData, isLoading: isSpeciesLoading, isError: isSpeciesError, error: speciesError } = useQuery(
         [POKEMON_SPECIES, pokemonId],
         () => getPokemonSpeciesAPI(pokemonId),
-        { enabled: !!pokemonId }
+        { enabled: !!pokemonId, suspense: true }
     );
 
     const getKoreanInfo = (key: string) => {
@@ -26,17 +26,18 @@ const usePokemonDetail = (pokemonId: string) => {
     const koreanInfo = getKoreanInfo("flavor_text_entries");
 
 
+
     const pokemonDetail = {
         ...detailData,
-        korean_name: koreanName ? koreanName.name : 'N/A',
-        korean_info: koreanInfo ? koreanInfo?.flavor_text : 'N/A',
+        korean_name: koreanName ? koreanName.name : DEFAULT_NAME,
+        korean_info: koreanInfo ? koreanInfo?.flavor_text : DEFAULT_NAME,
         evolution_chain: speciesData?.data.evolution_chain
     };
 
     const isLoading = isDetailLoading || isSpeciesLoading;
+    const isError = isDetailError || isSpeciesError;
 
-    return { pokemonDetail, isLoading };
+    return { pokemonDetail, isLoading, isError, speciesError, detailError };
 };
 
 export default usePokemonDetail;
-

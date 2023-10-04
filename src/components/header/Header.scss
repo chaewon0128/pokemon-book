@@ -1,5 +1,4 @@
 .header {
-    color: $main-blue;
     position: fixed;
     top: 0;
     left: 0;
@@ -20,20 +19,16 @@
         padding: 0 40px;
     }
 
-    @include desktop {
-        padding: 0 68px;
-        height: 110px;
-    }
 
     & .h1 {
+        display: inline-block;
+        color: $main-blue;
+        height: 40px;
         @include heading-xl;
 
         @include tablet {
             @include heading-xxl;
         }
 
-        @include desktop {
-            @include heading-xxxl;
-        }
     }
 }

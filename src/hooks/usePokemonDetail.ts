@@ -7,12 +7,12 @@ const usePokemonDetail = (pokemonId: string) => {
     const { data: detailData, isLoading: isDetailLoading, isError: isDetailError, error: detailError } = useQuery(
         [POKEMON_DETAIL, pokemonId],
         () => getPokemonDetailAPI(pokemonId),
-        { enabled: !!pokemonId, suspense: true }
+        { enabled: !!pokemonId }
     );
     const { data: speciesData, isLoading: isSpeciesLoading, isError: isSpeciesError, error: speciesError } = useQuery(
         [POKEMON_SPECIES, pokemonId],
         () => getPokemonSpeciesAPI(pokemonId),
-        { enabled: !!pokemonId, suspense: true }
+        { enabled: !!pokemonId }
     );
 
     const getKoreanInfo = (key: string) => {
@@ -37,7 +37,7 @@ const usePokemonDetail = (pokemonId: string) => {
     const isLoading = isDetailLoading || isSpeciesLoading;
     const isError = isDetailError || isSpeciesError;
 
-    return { pokemonDetail, isLoading, isError, speciesError, detailError };
+    return { pokemonDetail, isLoading, isError };
 };
 
 export default usePokemonDetail;

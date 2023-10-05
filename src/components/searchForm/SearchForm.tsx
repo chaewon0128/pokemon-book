@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, startTransition, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import './SearchForm.scss';
 import { FaMagnifyingGlass, FaXmark } from 'react-icons/fa6';
 import { useSetRecoilState } from 'recoil';
@@ -22,9 +22,7 @@ const SearchForm = () => {
     }
     const onSubmitSearch = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        startTransition(() => {
-            goToPage({ page: `/search/${inputValue}` });
-        })
+        goToPage({ page: `/search/${inputValue}` });
         setSearchValue(inputValue)
         onClearValue();
     }

@@ -7,23 +7,28 @@ import PokemonFigure from '../pokemonFigure/PokemonFigure';
 import PokemonAbility from '../pokemonAbility/PokemonAbility';
 import useLockBodyScroll from '../../hooks/useLockBodyScroll';
 import usePageNavigate from '../../hooks/usePageNavigate';
+import Loading from '../loading/Loading';
 
 const Card = () => {
     useLockBodyScroll();
     const { id: pokemonId } = useParams();
-    const { pokemonDetail } = usePokemonDetail(String(pokemonId));
+    const { pokemonDetail, isLoading } = usePokemonDetail(String(pokemonId));
     const { goToPage } = usePageNavigate();
     const onBackPage = () => {
         goToPage({ page: '/', option: true });
     }
     const evolutionChain = pokemonDetail?.evolution_chain?.url
 
+    if (isLoading) {
+        return <Loading />;
+    }
+
     return (
         <section className='card'>
             <button className='xMarkBtn' onClick={onBackPage} type='button'>
                 <FaXmark size={30} />
             </button>
-            <PokemonFigure type='information' name={pokemonDetail?.korean_name} src={pokemonDetail?.data.sprites.other['home']['front_default']} id={pokemonDetail?.data.id} />
+            <PokemonFigure type='information' name={pokemonDetail?.korean_name} src={pokemonDetail?.data?.sprites.other['home']['front_default']} id={pokemonDetail?.data?.id} />
             <PokemonAbility info={pokemonDetail?.korean_info} />
             {evolutionChain && <WrapByEvolution url={evolutionChain} />}
         </section>

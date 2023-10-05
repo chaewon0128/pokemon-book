@@ -17,7 +17,7 @@ const Home = () => {
                 <Suspense fallback={<Loading />}>
                     {allPokemons?.map((pokemons) => (
                         pokemons.data.results.map((result: { name: string }) => (
-                            <PokemonItem name={result.name} />
+                            <PokemonItem key={result.name} name={result.name} />
                         ))
                     ))}
                 </Suspense>

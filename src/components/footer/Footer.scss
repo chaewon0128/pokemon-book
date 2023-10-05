@@ -1,9 +1,11 @@
 footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: 100px;
     background: $medium-gray;
-    color: $light-gray;
-    @include text-large;
+
+    & p {
+        margin-top: 35px;
+        text-align: center;
+        color: $light-gray;
+        @include text-large;
+    }
 }

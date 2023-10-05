@@ -14,15 +14,21 @@ const usePokemonList = () => {
     } = useInfiniteQuery([ALL_POKEMON], ({ pageParam = 'https://pokeapi.co/api/v2/pokemon' }) => getPokemonDetaiWithURL(pageParam), {
         getNextPageParam: (lastPage) => {
             const nextPage = lastPage?.data.next
+            if (!nextPage) return;
             return nextPage
-        }
+        },
+        select: (data) => ({
+            pages: data.pages.flatMap((page) => page.data),
+            pageParams: data.pageParams,
+        }),
     })
 
     const { inView, ref } = useInView();
     const allPokemons = data?.pages;
 
+
     useEffect(() => {
-        if (inView && isPokemonNextPage) {
+        if (inView) {
             getPokemonNextPage();
 
         }

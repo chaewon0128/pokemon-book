@@ -7,7 +7,7 @@ export interface IPokemonFigure {
     src?: string,
     id?: string,
     type: 'information' | 'main' | 'search' | 'evolution',
-    onMoveDetail?: (id: string) => void
+    onMoveDetail?: (id?: string) => void
 }
 
 

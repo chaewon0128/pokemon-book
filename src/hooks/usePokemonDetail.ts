@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getPokemonDetailAPI, getPokemonSpeciesAPI } from "../api/getPokemon";
 import { DEFAULT_NAME, POKEMON_DETAIL, POKEMON_SPECIES } from "../constant";
+import { IPokemonDetail } from "../types";
 
 
 const usePokemonDetail = (pokemonId: string) => {
@@ -15,7 +16,7 @@ const usePokemonDetail = (pokemonId: string) => {
         { enabled: !!pokemonId }
     );
 
-    const getKoreanInfo = (key: string) => {
+    const getKoreanInfo = (key: string): { name: string, flavor_text: string } => {
         return speciesData?.data[key]?.find(
             (entry: { language: { name: string } }) =>
                 entry.language.name === "ko"
@@ -27,7 +28,7 @@ const usePokemonDetail = (pokemonId: string) => {
 
 
 
-    const pokemonDetail = {
+    const pokemonDetail: IPokemonDetail = {
         ...detailData,
         korean_name: koreanName ? koreanName.name : DEFAULT_NAME,
         korean_info: koreanInfo ? koreanInfo?.flavor_text : DEFAULT_NAME,

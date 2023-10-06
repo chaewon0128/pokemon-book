@@ -4,8 +4,8 @@ export interface IPokemonData {
 
 export interface IPokemonFigure {
     name: string,
-    src: string,
-    id: string,
+    src?: string,
+    id?: string,
     type: 'information' | 'main' | 'search' | 'evolution',
     onMoveDetail?: (id: string) => void
 }
@@ -16,12 +16,12 @@ export interface IUsePageNavigate {
     option?: boolean;
 }
 
-export interface IEvolutionDetail {
+export interface IPokemonDetail {
+    korean_name: string,
+    korean_info: string,
+    evolution_chain: { url: string },
     data?: {
-        id: string;
-        sprites: {
-            front_default: string;
-        };
-    };
-    korean_name?: string;
+        id: string,
+        sprites: { front_default: string, other: { dream_world: { [key: string]: string } } }
+    }
 }

@@ -6,33 +6,33 @@ import { searchValueState } from '../../state/store';
 import usePageNavigate from '../../hooks/usePageNavigate';
 
 const SearchForm = () => {
-    const [isVisibleRestBtn, setIsVisibleResetBtn] = useState(false);
-    const [inputValue, setInputValue] = useState('')
+    const [isResetButtonVisible, setIsResetButtonVisible] = useState(false);
+    const [searchInputValue, setSearchInputValue] = useState('')
     const setSearchValue = useSetRecoilState(searchValueState);
     const { goToPage } = usePageNavigate();
     const onChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
-        setInputValue(value);
-        setIsVisibleResetBtn(value.length > 0);
+        setSearchInputValue(value);
+        setIsResetButtonVisible(value.length > 0);
     }
 
     const onClearValue = () => {
-        setInputValue('');
-        setIsVisibleResetBtn(false);
+        setSearchInputValue('');
+        setIsResetButtonVisible(false);
     }
     const onSubmitSearch = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        goToPage({ page: `/search/${inputValue}` });
-        setSearchValue(inputValue)
+        goToPage({ page: `/search/${searchInputValue}` });
+        setSearchValue(searchInputValue)
         onClearValue();
     }
 
     return (
         <form className='searchForm' onSubmit={onSubmitSearch} id='searchForm'>
             <label className='sr-only' htmlFor='searchInput'>검색창</label>
-            <input id='searchInput' placeholder="포켓몬 이름을 입력해주세요" onChange={onChangeSearch} value={inputValue} />
-            {isVisibleRestBtn && <button className='resetButton' onClick={onClearValue} type='reset'><FaXmark size={20} /></button>}
-            <button className='searchButton' type='submit'><FaMagnifyingGlass size={20} /></button>
+            <input id='searchInput' placeholder="포켓몬 아이디를 입력해주세요" onChange={onChangeSearch} value={searchInputValue} />
+            {isResetButtonVisible && <button className='resetButton' aria-label='초기화 버튼' onClick={onClearValue} type='reset'><FaXmark size={20} /></button>}
+            <button className='searchButton' aria-label='검색 버튼' type='submit'><FaMagnifyingGlass size={20} /></button>
         </form>
     );
 };

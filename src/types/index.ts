@@ -15,3 +15,13 @@ export interface IUsePageNavigate {
     page: string;
     option?: boolean;
 }
+
+export interface IEvolutionDetail {
+    data?: {
+        id: string;
+        sprites: {
+            front_default: string;
+        };
+    };
+    korean_name?: string;
+}

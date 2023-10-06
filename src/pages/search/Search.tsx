@@ -21,12 +21,12 @@ const Search = () => {
     }
 
     return (
-        <section className="searchResult">
+        <section className='searchResult'>
             {isError ? <h2> "{keyword}" 에 대한 검색 결과를 찾을 수 없습니다. </h2> :
                 <>
                     <h2> "{keyword}" 에 대한 검색 결과 입니다. </h2>
                     <div className='searchItem'>
-                        <PokemonFigure name={pokemonDetail.korean_name} src={pokemonDetail?.data?.sprites.front_default} id={pokemonDetail?.data?.id} type='search' onMoveDetail={onMoveDetail} />
+                        <PokemonFigure name={pokemonDetail?.korean_name} src={pokemonDetail?.data?.sprites.front_default} id={pokemonDetail?.data?.id} type='search' onMoveDetail={onMoveDetail} />
                     </div>
                 </>
             }

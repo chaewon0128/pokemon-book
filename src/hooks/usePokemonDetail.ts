@@ -4,12 +4,12 @@ import { DEFAULT_NAME, POKEMON_DETAIL, POKEMON_SPECIES } from "../constant";
 
 
 const usePokemonDetail = (pokemonId: string) => {
-    const { data: detailData, isLoading: isDetailLoading, isError: isDetailError, error: detailError } = useQuery(
+    const { data: detailData, isLoading: isDetailLoading, isError: isDetailError } = useQuery(
         [POKEMON_DETAIL, pokemonId],
         () => getPokemonDetailAPI(pokemonId),
         { enabled: !!pokemonId }
     );
-    const { data: speciesData, isLoading: isSpeciesLoading, isError: isSpeciesError, error: speciesError } = useQuery(
+    const { data: speciesData, isLoading: isSpeciesLoading, isError: isSpeciesError } = useQuery(
         [POKEMON_SPECIES, pokemonId],
         () => getPokemonSpeciesAPI(pokemonId),
         { enabled: !!pokemonId }

@@ -12,7 +12,7 @@ const Search = () => {
     const { pokemonDetail, isLoading, isError } = usePokemonDetail(searchInput);
     const { keyword } = useParams()
     const { goToPage } = usePageNavigate();
-    const onMoveDetail = (id: string) => {
+    const onMoveDetail = (id?: string) => {
         goToPage({ page: `/detail/${id}`, option: false });
     }
 

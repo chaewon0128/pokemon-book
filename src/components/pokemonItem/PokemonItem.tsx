@@ -14,7 +14,7 @@ const PokemonItem = ({ name }: IPokemonData) => {
     }
     return (
         <div className='pokemonItem'>
-            <PokemonFigure name={pokemonDetail.korean_name} src={pokemonDetail?.data?.sprites.front_default} id={pokemonDetail?.data?.id} type='main' onMoveDetail={onMoveDetail} />
+            <PokemonFigure name={pokemonDetail.korean_name} src={pokemonDetail?.data?.sprites.other['dream_world']['front_default']} id={pokemonDetail?.data?.id} type='main' onMoveDetail={onMoveDetail} />
         </div>
     );
 };

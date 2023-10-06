@@ -28,7 +28,7 @@ const Card = () => {
             <button className='xMarkBtn' onClick={onBackPage} type='button'>
                 <FaXmark size={30} />
             </button>
-            <PokemonFigure type='information' name={pokemonDetail?.korean_name} src={pokemonDetail?.data?.sprites.other['home']['front_default']} id={pokemonDetail?.data?.id} />
+            <PokemonFigure type='information' name={pokemonDetail?.korean_name} src={pokemonDetail?.data?.sprites.other['dream_world']['front_default']} id={pokemonDetail?.data?.id} />
             <PokemonAbility info={pokemonDetail?.korean_info} />
             {evolutionChain && <WrapByEvolution url={evolutionChain} />}
         </section>

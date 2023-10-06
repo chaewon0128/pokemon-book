@@ -28,8 +28,7 @@
     }
 }
 
-.evolution,
-.main {
+.evolution {
     & img {
         width: 100px;
         height: 100px;
@@ -53,6 +52,22 @@
 
     & figcaption {
         @include heading-large;
+    }
+
+    & span {
+        @include text-medium;
+
+    }
+}
+
+.main {
+    & img {
+        width: 150px;
+        height: 150px;
+    }
+
+    & figcaption {
+        @include heading-large
     }
 
     & span {

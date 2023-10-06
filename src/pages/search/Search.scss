@@ -1,9 +1,9 @@
 .searchResult {
     padding-top: 200px;
     margin: 0 auto;
-    height: 700px;
     text-align: center;
     color: $white;
+    width: 400px;
 
     & h2 {
         @include heading-large;

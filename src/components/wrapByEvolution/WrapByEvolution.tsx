@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getPokemonDetaiWithURL } from "../../api/getPokemon";
 import usePokemonDetail from "../../hooks/usePokemonDetail";
-import { IEvolutionDetail, IPokemonData } from "../../types";
+import { IPokemonData } from "../../types";
 import './WrapByEvolution.scss';
 import PokemonFigure from "../pokemonFigure/PokemonFigure";
 import Loading from "../loading/Loading";
@@ -19,11 +19,6 @@ const WrapByEvolution = ({ url }: IPokemonData) => {
   const { pokemonDetail: secondEvolution } = usePokemonDetail(secondEvolutionName);
   const { pokemonDetail: thirdEvolution } = usePokemonDetail(thirdEvolutionName);
 
-  const evolutions: IEvolutionDetail[] = [
-    firstEvolution,
-    secondEvolution,
-    thirdEvolution,
-  ];
 
   if (isLoading) {
     return <Loading />;
@@ -33,17 +28,9 @@ const WrapByEvolution = ({ url }: IPokemonData) => {
     <div className='evolution'>
       <h3>진화 과정</h3>
       <div className="evolutionContainer">
-        {evolutions.map((evolutionName) =>
-          evolutionName && (
-            <PokemonFigure
-              key={evolutionName.data?.id}
-              name={evolutionName.korean_name || ""}
-              src={evolutionName && evolutionName.data?.sprites.front_default || ""}
-              id={evolutionName && evolutionName.data?.id || ""}
-              type="evolution"
-            />
-          )
-        )}
+        {firstEvolutionName && <PokemonFigure name={firstEvolution.korean_name} src={firstEvolution?.data?.sprites.front_default} id={firstEvolution?.data?.id} type="evolution" />}
+        {secondEvolutionName && <PokemonFigure name={secondEvolution.korean_name} src={secondEvolution?.data?.sprites.front_default} id={secondEvolution?.data?.id} type="evolution" />}
+        {thirdEvolutionName && <PokemonFigure name={thirdEvolution.korean_name} src={thirdEvolution?.data?.sprites.front_default} id={thirdEvolution?.data?.id} type="evolution" />}
       </div>
     </div>
   );

@@ -4,13 +4,13 @@ import { ALL_POKEMON } from '../constant';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-
 const usePokemonList = () => {
     const {
         data,
         fetchNextPage: getPokemonNextPage,
         hasNextPage: isPokemonNextPage,
         isFetchingNextPage,
+        isLoading
     } = useInfiniteQuery([ALL_POKEMON], ({ pageParam = 'https://pokeapi.co/api/v2/pokemon' }) => getPokemonDetaiWithURL(pageParam), {
         getNextPageParam: (lastPage) => {
             const nextPage = lastPage?.data.next
@@ -34,7 +34,7 @@ const usePokemonList = () => {
         }
     }, [inView]);
 
-    return { allPokemons, isFetchingNextPage, isPokemonNextPage, ref }
+    return { allPokemons, isFetchingNextPage, isPokemonNextPage, isLoading, ref }
 }
 
 export default usePokemonList;

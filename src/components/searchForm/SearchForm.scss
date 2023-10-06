@@ -5,6 +5,7 @@
         width: 50vw;
         height: 50px;
         border-radius: 50px;
+        padding-top: 0px;
         padding-left: 15px;
         border: none;
         background-color: $light-gray;
@@ -13,10 +14,24 @@
 
         @include tablet {
             padding-left: 30px;
+            padding-top: 5px;
         }
 
         @include desktop {
             height: 60px;
+            @include text-large;
+
+        }
+    }
+
+    & input::placeholder {
+        @include text-small;
+
+        @include tablet {
+            @include text-medium;
+        }
+
+        @include desktop {
             @include text-large;
         }
     }
